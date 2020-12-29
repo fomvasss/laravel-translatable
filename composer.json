@@ -2,7 +2,7 @@
     "name": "fomvasss/laravel-translatable",
     "description": "A package to manage SEO (meta-tags, xml-fields, etc.)",
     "type": "composer-package",
-    "keywords": ["meta tags", "meta", "tags", "seo", "seo", "sitemap", "xml-map", "laravel"],
+    "keywords": ["laravel", "language", "localization", "translation", "laravel-translatable", "multilingual"],
     "authors": [
         {
             "name": "Vasyl Fomin",
@@ -27,5 +27,10 @@
                 "Fomvasss\\LaravelTranslatable\\ServiceProvider"
             ]
         }
-    }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

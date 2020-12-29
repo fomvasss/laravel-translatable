@@ -6,13 +6,9 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/fomvasss/laravel-translatable.svg?style=for-the-badge)](https://packagist.org/packages/fomvasss/laravel-translatable)
 [![Quality Score](https://img.shields.io/scrutinizer/g/fomvasss/laravel-translatable.svg?style=for-the-badge)](https://scrutinizer-ci.com/g/fomvasss/laravel-translatable)
 
-This is a Laravel package for creating translations content of Eloquent-models.
-For translation, created models in different languages,
-between which relations is established through additional fields.
-The main advantage is that there is no need to create additional tables,
-models or specific JSON-fields, all operations occur without changes.
-The functionality is very easy to integrate into an existing / running project.
-All you need to do is add two fields to the desired table / model by connecting one PHP-Trait.
+This is a Laravel package for creating translations content of Eloquent-models. For translation, created models in different languages, between which relations is established through additional fields. The main advantage is that there is no need to create additional tables, models or specific JSON-fields, all operations occur without changes.
+The functionality is very easy to integrate into an existing / running project. All you need to do is add two fields to the desired table / model by connecting one PHP-Trait.
+
 ----------
 
 ## Installation
