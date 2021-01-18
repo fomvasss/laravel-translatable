@@ -57,17 +57,40 @@ trait HasTranslations
 
         foreach ($languages as $langcode => $language) {
             $model = $translations->where($this->getLangcodeColumn(), $langcode)->first();
-            $result->push([
-                'model_key' => optional($model)->{$this->getKeyName()},
-                'model_type' => Str::snake(class_basename(static::class)),
-                'translation_uuid' => optional($model)->{$this->getTranslationUuidColumn()},
-                'langcode' => $langcode,
-                'language' => $language,
-                'status' => $this->getTranslationStatus($langcode, $model)
-            ]);
+
+            $result->push($this->getTranslationData($langcode, $language, $model));
         }
 
         return $result;
+    }
+
+    /**
+     * @param string $langcode
+     * @param $language
+     * @param null $model
+     * @return array
+     */
+    protected function getTranslationData(string $langcode, $language, $model = null): array
+    {
+        return [
+            'type' => Str::snake(class_basename(static::class)),
+            'status' => $this->getTranslationStatus($langcode, $model),
+            'model' => $this->getTranslationModelData($langcode, $model),
+            'language' => $language,
+        ];
+    }
+
+    /**
+     * @param string $langcode
+     * @param null $model
+     * @return array
+     */
+    protected function getTranslationModelData(string $langcode, $model = null): array
+    {
+        return [
+            $this->getKeyName() => optional($model)->{$this->getKeyName()},
+            $this->getLangcodeColumn() => $langcode,
+        ];
     }
 
     /**

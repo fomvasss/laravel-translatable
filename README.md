@@ -71,32 +71,32 @@ class ArticleController extends Controller
 {
     public function index(Request $request)
     {
-        // Select by app.locale:
+        // Select by config('app.locale'):
         $articles = \App\Model\Article::byLang()->paginate();
-        // OR
+        // OR by request
         $articles = \App\Model\Article::byLang($request->lang)->paginate();
         // ...
     }
     
     public function store(Request $request)
     {
-    	// Save new article (1) and set English (EN) language
+    	// Let's create an article in English (en)
         $article1 = \App\Model\Article::create([
             'name' => 'Article 1, for EN language',
             'langcode' => 'en',
         ]);
         
-        // For the saved article 1, the will be auto-generated UUID
+        // For the saved article ($article1)  will be auto-generated UUID
         // Example: 70cf3963-cf41-464c-9d81-411d3a524789
 
-        // For the saved article 1, add a translation into Ukrainian (UK) language
+        // We will create a translation into Ukrainian (uk) for the article ($article1)
         $article2 = \App\Model\Article::create([
             'name' => 'Стаття 1, для UK мови',
             'langcode' => 'uk',
             'translation_uuid' => $article1->uuid,
         ]);
         // OR
-         $article2 = \App\Model\Article::create(['name' => 'Стаття 1, для UK мови']);
+        $article2 = \App\Model\Article::create(['name' => 'Стаття 1, для UK мови']);
         $article2->saveTranslatable('uk', $article1->uuid);
   
         // A couple langcode & translation_uuid must be unique
